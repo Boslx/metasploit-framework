@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 #   spec.add_runtime_dependency '<name>', [<version requirements>]
 gemspec name: 'metasploit-framework'
 
+
 # separate from test as simplecov is not run on travis-ci
 group :coverage do
   # code coverage for tests
@@ -10,6 +11,9 @@ group :coverage do
 end
 
 group :development do
+  gem 'ruby-debug-ide', '~> 0.7.2'
+  gem 'debase', '~> 0.2.5.beta2'
+
   # Markdown formatting for yard
   gem 'redcarpet'
   # generating documentation
