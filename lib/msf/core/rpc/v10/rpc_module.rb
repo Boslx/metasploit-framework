@@ -742,7 +742,8 @@ private
       'Payload'  => opts['PAYLOAD'],
       'Target'   => opts['TARGET'],
       'RunAsJob' => true,
-      'Options'  => opts
+      'Options'  => opts,
+      'LocalOutput' => Rex::Ui::Text::Output::Buffer::new(),
     })
     {
       "job_id" => mod.job_id,
@@ -754,7 +755,8 @@ private
     uuid, job = Msf::Simple::Auxiliary.run_simple(mod,{
       'Action'   => opts['ACTION'],
       'RunAsJob' => true,
-      'Options'  => opts
+      'Options'  => opts,
+      'LocalOutput' => Rex::Ui::Text::Output::Buffer::new(),
     }, job_listener: self.job_status_tracker)
     {
       "job_id" => job,

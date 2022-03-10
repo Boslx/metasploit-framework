@@ -318,8 +318,14 @@ class FrameworkEventSubscriber
 
     instanceInfo = instance.instance_values
     instanceInfo["last_event_name"] = name
+    instanceInfo.delete("options")
+    instanceInfo.delete("thread_list")
 
     @@rcl.json_set(instance.uuid, Rejson::Path.root_path, instanceInfo)
+
+    if instance.respond_to?('user_output') && instance.user_output != nil
+      @@rcl.append(instance.uuid + "_console", instance.user_output.dump_buffer)
+    end
 
     if framework.db.active
       event = {
