@@ -13,6 +13,9 @@ require 'monitor'
 require 'metasploit/framework/version'
 require 'rex/socket/ssl'
 require 'metasploit/framework/thread_factory_provider'
+
+require 'rejson'
+
 module Msf
 
 ###
@@ -293,6 +296,7 @@ end
 
 class FrameworkEventSubscriber
   include Framework::Offspring
+
   def initialize(framework)
     self.framework = framework
   end
@@ -305,10 +309,18 @@ class FrameworkEventSubscriber
 
   include Msf::GeneralEventSubscriber
 
+  @@rcl = Redis.new(host: "localhost")
+
   #
   # Generic handler for module events
   #
   def module_event(name, instance, opts={})
+
+    instanceInfo = instance.instance_values
+    instanceInfo["last_event_name"] = name
+
+    @@rcl.json_set(instance.uuid, Rejson::Path.root_path, instanceInfo)
+
     if framework.db.active
       event = {
         :workspace => framework.db.find_workspace(instance.workspace),

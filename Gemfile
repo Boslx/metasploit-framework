@@ -13,6 +13,7 @@ end
 group :development do
   gem 'ruby-debug-ide', '~> 0.7.2'
   gem 'debase', '~> 0.2.5.beta2'
+  gem 'rejson-rb', '~> 1.0', '>= 1.0.1'
 
   # Markdown formatting for yard
   gem 'redcarpet'

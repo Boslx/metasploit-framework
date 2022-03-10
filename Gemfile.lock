@@ -127,7 +127,7 @@ GEM
       activerecord (>= 3.1.0, < 8)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.564.0)
+    aws-partitions (1.565.0)
     aws-sdk-core (3.129.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
@@ -347,7 +347,11 @@ GEM
     recog (2.3.22)
       nokogiri
     redcarpet (3.5.1)
+    redis (4.2.5)
     regexp_parser (2.2.1)
+    rejson-rb (1.0.1)
+      json (~> 2.0)
+      redis (~> 4.2.1)
     reline (0.2.5)
       io-console (~> 0.5)
     rex-arch (0.1.14)
@@ -423,13 +427,13 @@ GEM
     rspec-rerun (1.1.0)
       rspec (~> 3.0)
     rspec-support (3.11.0)
-    rubocop (1.25.1)
+    rubocop (1.26.0)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.15.1, < 2.0)
+      rubocop-ast (>= 1.16.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.16.0)
@@ -522,6 +526,7 @@ DEPENDENCIES
   pry-byebug
   rake
   redcarpet
+  rejson-rb (~> 1.0, >= 1.0.1)
   rspec-rails
   rspec-rerun
   rubocop
